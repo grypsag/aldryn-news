@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.dates import ArchiveIndexView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.db.models import Count
 from menus.utils import set_language_changer
 
 from aldryn_news import request_news_identifier
@@ -59,7 +60,15 @@ class ArchiveView(PaginatedBaseNewsView, ArchiveIndexView):
         kwargs['year'] = int(self.kwargs.get('year')) if 'year' in self.kwargs else None
         if kwargs['year']:
             kwargs['archive_date'] = datetime.date(kwargs['year'], kwargs['month'] or 1, 1)
-        kwargs['tags'] = Tag.objects.all()
+
+        counted_tags = dict(News.objects
+                            .values('tags')
+                            .annotate(count=Count('tags')).order_by('-count')
+                            .values_list('tags', 'count'))
+        tags = Tag.objects.filter(pk__in=list(counted_tags.keys()))
+        for tag in tags:
+            tag.count = counted_tags[tag.pk]
+        kwargs['tags'] = sorted(tags, key=lambda x: -x.count)
         return super(ArchiveView, self).get_context_data(**kwargs)
 
 
