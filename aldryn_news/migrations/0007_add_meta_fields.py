@@ -12,11 +12,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='news',
             name='meta_description',
-            field=models.CharField(default='', max_length=255, verbose_name='Meta Description'),
+            field=models.CharField(default='', blank=True, max_length=255, verbose_name='Meta Description'),
         ),
         migrations.AddField(
             model_name='news',
             name='meta_title',
-            field=models.CharField(default='', max_length=100, verbose_name='Meta Title'),
+            field=models.CharField(default='', blank=True, max_length=100, verbose_name='Meta Title'),
         ),
     ]

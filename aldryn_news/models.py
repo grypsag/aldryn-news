@@ -183,8 +183,8 @@ class News(TranslatableModel):
                                  null=True,
                                  help_text=_('WARNING! Used in the URL. If changed, the URL will change.'),
                                  on_delete=models.CASCADE)
-    meta_title = models.CharField(_('Meta Title'), max_length=100, default='')
-    meta_description = models.CharField(_('Meta Description'), max_length=255, default='')
+    meta_title = models.CharField(_('Meta Title'), max_length=100, default='', blank=True)
+    meta_description = models.CharField(_('Meta Description'), max_length=255, default='', blank=True)
 
     objects = RelatedManager()
     published = PublishedManager(queryset_class=NewsTranslationQueryset)
