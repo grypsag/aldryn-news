@@ -76,11 +76,15 @@ class Category(TranslatableModel):
         unique_together = (('slug', 'language_code'),)
 
     def __str__(self):
+<<<<<<< Updated upstream
         if HVAD_VERSION >= (2, 0, 0):
             name = getattr(self.translations.active, 'name', str(self.pk))
         else:
             name = self.lazy_translation_getter('name', str(self.pk))
         return name
+=======
+        return self.lazy_translation_getter('name', str(self.pk))
+>>>>>>> Stashed changes
 
     def get_absolute_url(self, language=None):
         language = language or get_current_language()
@@ -107,6 +111,7 @@ class Tag(TranslatableModel):
 
     objects = TagManager()
 
+<<<<<<< Updated upstream
     class Meta:
         unique_together = (('slug', 'language_code'),)
 
@@ -123,6 +128,10 @@ class Tag(TranslatableModel):
             self.slug = slugify(unidecode(self.name))
 
         super(Tag, self).save(*args, **kwargs)
+=======
+    def __str__(self):
+        return self.name
+>>>>>>> Stashed changes
 
     @classmethod
     def save_translations(cls, instance, **kwargs):
@@ -177,12 +186,21 @@ class News(TranslatableModel):
     publication_start = models.DateTimeField(_('Published Since'), default=datetime.datetime.now,
                                              help_text=_('Used in the URL. If changed, the URL will change.'))
     publication_end = models.DateTimeField(_('Published Until'), null=True, blank=True)
+<<<<<<< Updated upstream
     category = models.ForeignKey(Category,
                                  verbose_name=_('Category'),
                                  blank=True,
                                  null=True,
                                  help_text=_('WARNING! Used in the URL. If changed, the URL will change.'),
                                  on_delete=models.CASCADE)
+=======
+    category = models.ForeignKey(Category, verbose_name=_('Category'), blank=True, null=True,
+                                 help_text=_('WARNING! Used in the URL. If changed, the URL will change.'))
+
+    meta_title = models.CharField(_('Meta Title'), max_length=100, default='')
+    meta_description = models.CharField(_('Meta Description'), max_length=255, default='')
+
+>>>>>>> Stashed changes
     objects = RelatedManager()
     published = PublishedManager(queryset_class=NewsTranslationQueryset)
     tags = TaggableManager(blank=True, through=TaggedItem, manager=CustomTaggableManager)
@@ -195,11 +213,15 @@ class News(TranslatableModel):
         unique_together = (('slug', 'language_code'),)
 
     def __str__(self):
+<<<<<<< Updated upstream
         if HVAD_VERSION >= (2, 0, 0):
             title = getattr(self.translations.active, 'title', str(self.pk))
         else:
             title = self.lazy_translation_getter('title', str(self.pk))
         return title
+=======
+        return self.lazy_translation_getter('title', str(self.pk))
+>>>>>>> Stashed changes
 
     def get_absolute_url(self, language=None):
         language = language or get_current_language()
