@@ -21,7 +21,7 @@ class NewsAdmin(TranslatableAdmin, FrontendEditableAdminMixin, PlaceholderAdminM
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = [
-            (None, {'fields': ['title', 'slug', 'category', 'publication_start', 'publication_end']}),
+            (None, {'fields': ['title', 'slug', 'meta_title', 'meta_description', 'category', 'publication_start', 'publication_end']}),
             (None, {'fields': ['key_visual', 'lead_in', 'tags', 'canonical_tag']})
         ]
 
