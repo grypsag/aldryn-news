@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('events', '0006_tags_order'),
+        ('aldryn_news', '0006_tags_order'),
     ]
 
     operations = [
