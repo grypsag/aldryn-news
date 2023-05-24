@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('events', '0009_auto__add_newslinksplugin'),
+        ('events', '0006_tags_order'),
     ]
 
     operations = [
