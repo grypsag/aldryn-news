@@ -2,7 +2,7 @@
 from aldryn_apphooks_config.admin import BaseAppHookConfig
 from aldryn_apphooks_config.app_base import CMSConfigApp
 from cms.apphook_pool import apphook_pool
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from aldryn_news.cms_appconfig import NewsConfig
 from aldryn_news.cms_menus import NewsCategoryMenu

@@ -13,7 +13,7 @@ except ImportError:
     from django.urls import reverse, NoReverseMatch
 from django.db import models
 from django.template.defaultfilters import slugify
-from django.utils.translation import override, ugettext_lazy as _
+from django.utils.translation import override, gettext_lazy as _
 from djangocms_text_ckeditor.fields import HTMLField
 from filer.fields.image import FilerImageField
 from hvad.models import TranslatableModel, TranslatedFields
