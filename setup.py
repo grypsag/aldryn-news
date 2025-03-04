@@ -8,7 +8,6 @@ REQUIREMENTS = [
     'django_select2',
     'django-taggit>=1.2',
     'django-taggit-labels',
-    'djangocms-text-ckeditor',
     'translitcodec',
     'Unidecode',
 ]
@@ -16,7 +15,7 @@ REQUIREMENTS = [
 CLASSIFIERS = [
     'Development Status :: 2 - Pre-Alpha',
     'Environment :: Web Environment',
-    'Framework :: Django :: 1.11',
+    'Framework :: Django :: 4.2',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
@@ -29,10 +28,10 @@ CLASSIFIERS = [
 setup(
     name='aldryn-news',
     version=__version__,
-    description='Publish news in django CMS',
+    description='Publish news in Django CMS',
     author='Divio AG',
     author_email='info@divio.ch',
-    url='https://github.com/softformance/aldryn-news',
+    url='https://github.com/grypsag/aldryn-news',
     packages=find_packages(),
     license='LICENSE.txt',
     platforms=['OS Independent'],
