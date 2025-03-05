@@ -14,7 +14,7 @@ except ImportError:
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import override, gettext_lazy as _
-from djangocms_text_ckeditor.fields import HTMLField
+from djangocms_text.fields import HTMLField
 from filer.fields.image import FilerImageField
 from hvad.models import TranslatableModel, TranslatedFields
 from hvad.utils import get_translation, get_cached_translation
